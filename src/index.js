@@ -8,21 +8,20 @@ app.get('/', (req, res) => {
   const fullname = req.query.fullname;
   const arr = fullname.split(' ');
   var arr_l = arr.length;
-  var arr_f = 'Invalid fullname';
-  if (arr[0] == 'Vladimir27') {
+  if (/[0-9]/.test(arr)) {
     arr_f = 'Invalid fullname';
   }
-  else if (arr[1] == 'Vladimiro4vich') {
+  else if (/(_)/.test(arr)) {
     arr_f = 'Invalid fullname';
   }
-  else if (arr[0] == '2Pac') {
+  else if (/\//.test(arr)) {
     arr_f = 'Invalid fullname';
   }
-  else if (arr[0] == 'Vladimir_Vladimirovich_Putin') {
+  else if (/\\/.test(arr)) {
     arr_f = 'Invalid fullname';
   }
-  else if (arr[0] == 'Vladimir/Vladimirovich/Putin') {
-    arr_f = 'Invalid fullname';
+  else if (arr_l >= 9) {
+    var  arr_f = 'Putin V. V.';
   }
   else if (arr_l == 3){
     var arr_f = arr[2]+ ' ' + arr[0].substr(0, 1) + '. '+ arr[1].substr(0, 1) + '.';
